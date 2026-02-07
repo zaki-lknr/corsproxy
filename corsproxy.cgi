@@ -58,7 +58,7 @@ unless ($uri->scheme =~ /^https?$/) {
     exit;
 }
 
-my $host = lc($uri->host // '');
+my $host = lc( defined($uri->host) ? $uri->host : '' );
 
 # SSRF 対策（内部アドレス遮断）
 if ($host =~ /^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[0-1])\.)/) {
