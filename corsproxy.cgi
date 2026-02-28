@@ -16,6 +16,7 @@ my $TIMEOUT = 10;
 # 許可ドメイン制限
 my @ALLOW_HOST_REGEX = (
     qr/^(?:[a-z0-9-]+\.)*swarmapp\.com$/,
+    qr/^(?:[a-z0-9-]+\.)*foursquare\.com$/,
 );
 
 # =========================
@@ -79,7 +80,7 @@ for (@ALLOW_HOST_REGEX) {
 if (!$ok) {
     print "Status: 403 Forbidden\r\n";
     print "Content-Type: text/plain\r\n\r\n";
-    print "Host not allowed\n";
+    print "Host not allowed: $host\n";
     exit;
 }
 
